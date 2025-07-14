@@ -8,8 +8,8 @@ Resource Data for Targeting Targeting the CMKLR1-Mediated Signaling Rebalances I
 
 "C57BL6_Testicular_Macrophage_Adult_CMRKO_SeuratProject.r" is source code for figure 2.
 
-"C57BL6_Testicular_Macrophage_33wkto57wk_Aging_SeuratProject" is source code for figure 3.
+"C57BL6_Testicular_Macrophage_33wkto57wk_Aging_SeuratProject.r" is source code for figure 3.
 
-"C57BL6_Testicular_Macrophage_33wkto57wk_P12C5_SeuratProject" is source code for figure 4.
+"C57BL6_Testicular_Macrophage_33wkto57wk_P12C5_SeuratProject.r" is source code for figure 4.
 
-"C57BL6_Testicular_Macrophage_33wkto57wk_Exercise_SeuratProject" is source code for figure 5.
+"C57BL6_Testicular_Macrophage_33wkto57wk_Exercise_SeuratProject.r" is source code for figure 5.
