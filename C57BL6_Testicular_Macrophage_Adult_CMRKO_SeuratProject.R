@@ -96,20 +96,23 @@ plot5 <- DimPlot(seurat_merge, reduction = "tsne", label = FALSE, repel = TRUE, 
   scale_fill_manual(values = mycol0)
 ggsave("C57BL6_Adult_Testis_Barcodeplot.tif", plot = plot5, width = 5, height = 4, dpi = 300)
 
-Macrophage_Markers <- c("Col1a1","Dcn","Adgre1","Mrc1","H2-Aa")
-plot6 <- DotPlot(seurat_merge, group.by = 'seurat_clusters',
+Cell_Markers <- c("Col1a1","Dcn","Adgre1","Mrc1","H2-Aa")
+DotPlot(seurat_merge, group.by = 'seurat_clusters',
+        features = unique(Cell_Markers),cols = c("#ffffff", "#448444"), dot.scale=6) + RotatedAxis() + 
+  theme(axis.text.x = element_text(size = 20),axis.text.y = element_text(size = 20)) + labs(x='',y='')
+Seurat_Macrophage <- subset(seurat_merge, ident=c("0"))
+Macrophage_Markers <- c("Adgre1","Mrc1","H2-Aa")
+plot6 <- DotPlot(Seurat_Macrophage, group.by = 'seurat_clusters',
         features = unique(Macrophage_Markers),cols = c("#ffffff", "#448444"), dot.scale=6) + RotatedAxis() + 
   theme(axis.text.x = element_text(size = 20),axis.text.y = element_text(size = 20)) + labs(x='',y='')
+plot6
 ggsave("C57BL6_Adult_Testis_Featureplot.tif", plot = plot6, width = 5, height = 4, dpi = 300)
 
 FeaturePlot(seurat_merge, features = "Cmklr1", cols =c("lightgrey","red"),pt.size = 2)
 
-
-Seurat_Macrophage <- subset(seurat_merge, ident=c("0"))
-##
+## Violin Plot and Group Comparison (e.g. Lipa)
 A <- AverageExpression(Seurat_Macrophage, group.by = "orig.ident")
 write.csv(A,"Macrophage Average Expression.csv")
-
 my_comparisons <- list(c("WT", "KO"))
 plot6 <- VlnPlot(Seurat_Macrophage,"Lipe", group.by = "orig.ident", pt.size = 0, 
                   combine = TRUE) + NoLegend() + geom_boxplot(fill="white", alpha = 0.9, width=0.1) +
